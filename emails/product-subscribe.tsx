@@ -1,0 +1,98 @@
+// CATALOG_PRODUCT_SUBSCRIBE_NOTIFY
+import {
+  Body,
+  Button,
+  Column,
+  Container,
+  Head,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Row,
+  Section,
+  Tailwind,
+  Text,
+} from "@react-email/components";
+import * as React from "react";
+import info from "./static/info.json"
+
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "";
+
+export const StripeWelcomeEmail = () => (
+  <Html>
+    <Head />
+    <Preview>You're now ready to make live transactions with Stripe!</Preview>
+    <Tailwind
+      config={{
+        theme: {
+          borderRadius: {
+            DEFAULT: "20px"
+          },
+          extend: {
+            colors: {
+              main: "#3C569F",
+              wrapper: "#F4F5FA",
+              secondary: "#75798a"
+            }
+          }
+        }
+      }}
+    >
+      <Body className="bg-wrapper my-auto mx-auto font-sans px-2 pb-[50px]">
+        <Container className="max-w-[600px] py-4">
+          <Link href={info.site}>
+            <Img
+              src={`https://vs113.ru/logo.png`}
+              width="114"
+              height="30"
+              alt="frizar"
+            />
+          </Link>
+        </Container>
+        <Container className="max-w-[600px] p-4 bg-white rounded mb-4 text-center">
+          <Text className="text-[20px] font-bold">Информация о поступлении товара</Text>
+        </Container>
+        <Container className="max-w-[600px] p-4 bg-white rounded mb-4">
+          <Text className="font-bold">Уважаемый, #USER_NAME# !</Text>
+          <Text>Товар <Link className="text-main underline" href="#PAGE_URL#">#NAME#</Link> поступил на склад. Вы просили оповестить вас о поступление товара.
+          </Text>
+        </Container>
+        <Container className="max-w-[600px] p-4 bg-white rounded">
+          <Section>
+            <Row >
+              <Column className="align-top">
+                <Text className="font-bold text-[20px] ">Свяжитесь с нами</Text>
+                <Link href={`mailto:${info.email}`} className="text-main text-[14px]">{info.email}</Link>
+                <br />
+                <Link href={`tel:${info.phoneHref}`} className="text-main text-[14px]">{info.phone}</Link>
+              </Column>
+              <Column className="align-top">
+                <Text className="font-bold text-[20px] ">Полезные ссылки</Text>
+                <Link href={`#`} className="text-main text-[14px]">Наш Блог</Link>
+                <br />
+                <Link href={`#`} className="text-main text-[14px]">Новости</Link>
+                <br />
+                <Link href={`#`} className="text-main text-[14px]">Акции</Link>
+                <br />
+                <Link href={`#`} className="text-main text-[14px]">Форма обратной связи</Link>
+              </Column>
+            </Row>
+          </Section>
+          <Hr />
+          <Text className="text-[10px] leading-[15px]">
+            Вы получили это письмо, так как подписались на товаров на сайте frizar.ru
+          </Text>
+          <Text className="text-[10px] leading-[15px] text-secondary !mb-0">
+            Общество с ограниченной ответственностью «Фризар». Юридический адрес: {info.urAddress} ИНН {info.inn} КПП {info.kpp} ОГРН {info.ogrn}
+          </Text>
+        </Container>
+      </Body>
+    </Tailwind>
+  </Html >
+);
+
+export default StripeWelcomeEmail;

@@ -1,0 +1,107 @@
+import {
+  Body,
+  Button,
+  Column,
+  Container,
+  Head,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Row,
+  Section,
+  Tailwind,
+  Text,
+} from "@react-email/components";
+import * as React from "react";
+
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "";
+
+
+const info = {
+  site: "https://frizar.ru",
+  email: "limpopo113@gmail.com",
+  phone: "+7 (901) 285-32-13",
+  phoneHref: "79012853213",
+  company: "Frizar",
+
+}
+
+export const StripeWelcomeEmail = () => (
+  <Html>
+    <Head />
+    <Preview>You're now ready to make live transactions with Stripe!</Preview>
+    <Tailwind
+      config={{
+        theme: {
+          borderRadius: {
+            DEFAULT: "20px"
+          },
+          extend: {
+            colors: {
+              main: "#3C569F",
+              wrapper: "#F4F5FA",
+              secondary: "#75798a"
+            }
+          }
+        }
+      }}
+    >
+      <Body className="bg-wrapper my-auto mx-auto font-sans px-2">
+        <Container className="max-w-[600px] py-4">
+          <Link href={info.site}>
+            <Img
+              src={`${baseUrl}/static/logo.png`}
+              width="114"
+              height="30"
+              alt="frizar"
+            />
+          </Link>
+        </Container>
+        <Container className="max-w-[600px] p-4 bg-white rounded mb-4 text-center">
+          <Text className="text-[20px] font-bold">Информация о поступлении товара</Text>
+        </Container>
+        <Container className="max-w-[600px] p-4 bg-white rounded mb-4">
+          <Text className="font-bold">Уважаемый, Николай !</Text>
+          <Text>Товар <Link className="text-main underline" href="https://frizar.ru/catalog/izdeliya_dlya_vysadki_obrabotki_metallov_davleniem/vstavka_1010_0381_vk8_tverdosplavnaya_1/">
+            Вставка 1010-0381 ВК8 твердосплавная</Link> поступил на склад. Вы просили оповестить вас о поступление товара.
+          </Text>
+        </Container>
+        <Container className="max-w-[600px] p-4 bg-white rounded">
+          <Section>
+            <Row >
+              <Column className="align-top">
+                <Text className="font-bold text-[20px] ">Свяжитесь с нами</Text>
+                <Link href={`mailto:${info.email}`} className="text-main text-[14px]">{info.email}</Link>
+                <br />
+                <Link href={`tel:${info.phoneHref}`} className="text-main text-[14px]">{info.phone}</Link>
+              </Column>
+              <Column className="align-top">
+                <Text className="font-bold text-[20px] ">Полезные ссылки</Text>
+                <Link href={`#`} className="text-main text-[14px]">Наш Блог</Link>
+                <br />
+                <Link href={`#`} className="text-main text-[14px]">Новости</Link>
+                <br />
+                <Link href={`#`} className="text-main text-[14px]">Акции</Link>
+                <br />
+                <Link href={`#`} className="text-main text-[14px]">Форма обратной связи</Link>
+              </Column>
+            </Row>
+          </Section>
+          <Hr />
+          <Text className="text-[10px] leading-[15px]">
+            Вы получили это письмо, так как подписались на товаров на сайте frizar.ru
+          </Text>
+          <Text className="text-[10px] leading-[15px] text-secondary !mb-0">
+            Общество с ограниченной ответственностью «Фризар». Юридический адрес: Россия, 241047, г. Брянск, ул. 2-я Мичурина, д. 11. к. 27. ИНН 3250534321 КПП 325701001 ОГРН 1123256019457
+          </Text>
+        </Container>
+      </Body>
+    </Tailwind>
+  </Html >
+);
+
+export default StripeWelcomeEmail;

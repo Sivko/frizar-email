@@ -47,7 +47,7 @@ export const PlaidVerifyIdentityEmail = ({
       >
         <Container style={container}>
           <Img
-            src={`https://vs113.ru/logo.png`}
+            src={`https://frizar.ru/logo.png`}
             width="212"
             height="60"
             alt="frizar"
@@ -65,7 +65,7 @@ export const PlaidVerifyIdentityEmail = ({
           </Heading>
           <Section className="text-center py-3 w-[280px]">
             <Button
-              href="https://vs113.ru/confirm-email?code=#CONFIRM_CODE#&userId=#USER_ID#"
+              href="https://frizar.ru/confirm-email?code=#CONFIRM_CODE#&userId=#USER_ID#"
               className="bg-[#000] block text-center rounded-[4px] text-white text-[12px] font-semibold no-underline text-center py-4"
             >Перейдите по ссылке</Button>
           </Section>

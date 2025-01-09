@@ -87,7 +87,9 @@ export const StripeWelcomeEmail = () => (
             Вы получили это письмо, так как подписались на товаров на сайте frizar.ru
           </Text>
           <Text className="text-[10px] leading-[15px] text-secondary !mb-0">
-            Общество с ограниченной ответственностью «Фризар». Юридический адрес: {info.urAddress} ИНН {info.inn} КПП {info.kpp} ОГРН {info.ogrn}
+            Общество с ограниченной ответственностью «Фризар». Юридический
+            адрес: {info.urAddress} ИНН {info.inn} КПП {info.kpp} ОГРН{" "}
+            {info.ogrn}
           </Text>
         </Container>
       </Body>

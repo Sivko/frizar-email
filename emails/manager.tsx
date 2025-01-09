@@ -15,20 +15,11 @@ import {
   Text,
 } from "@react-email/components";
 import * as React from "react";
+import info from "./static/info.json";
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
-
-
-const info = {
-  site: "https://frizar.ru",
-  email: "limpopo113@gmail.com",
-  phone: "+7 (901) 285-32-13",
-  phoneHref: "79012853213",
-  company: "Frizar",
-
-}
 
 export const StripeWelcomeEmail = () => (
   <Html>
@@ -96,7 +87,9 @@ export const StripeWelcomeEmail = () => (
             Вы получили это письмо, так как подписались на товаров на сайте frizar.ru
           </Text>
           <Text className="text-[10px] leading-[15px] text-secondary !mb-0">
-            Общество с ограниченной ответственностью «Фризар». Юридический адрес: Россия, 241047, г. Брянск, ул. 2-я Мичурина, д. 11. к. 27. ИНН 3250534321 КПП 325701001 ОГРН 1123256019457
+            Общество с ограниченной ответственностью «Фризар». Юридический
+            адрес: {info.urAddress} ИНН {info.inn} КПП {info.kpp} ОГРН{" "}
+            {info.ogrn}
           </Text>
         </Container>
       </Body>

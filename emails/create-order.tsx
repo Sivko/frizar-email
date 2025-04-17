@@ -1,4 +1,4 @@
-// SALE_NEW_ORDER
+// [SALE_NEW_ORDER] Новый заказ
 import {
   Body,
   Button,
@@ -35,7 +35,7 @@ export const StripeWelcomeEmail = () => (
           extend: {
             colors: {
               main: "#3C569F",
-              wrapper: "#F4F5FA",
+              wrapper: "#F4F5FA", // "#E9EEF6",
               secondary: "#75798a",
             },
           },
@@ -59,7 +59,7 @@ export const StripeWelcomeEmail = () => (
           </Text>
         </Container>
         <Container className="max-w-[600px] p-4 bg-white rounded mb-4">
-          <Text className="font-bold">Уважаемый, #USER_NAME# !</Text>
+          <Text className="font-bold">Уважаемый, #ORDER_USER# !</Text>
           <Text>Ваш заказ номер #ORDER_ID# от #ORDER_DATE# принят</Text>
           <Text>Товары:</Text>
           <Text>#ORDER_LIST#</Text>

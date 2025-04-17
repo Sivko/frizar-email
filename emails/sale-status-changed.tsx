@@ -1,4 +1,4 @@
-// [SALE_NEW_ORDER] Новый заказ
+// [SALE_STATUS_CHANGED] Изменение статуса заказа
 import {
   Body,
   Button,
@@ -55,25 +55,23 @@ export const StripeWelcomeEmail = () => (
         </Container>
         <Container className="max-w-[600px] p-4 bg-white rounded mb-4 text-center">
           <Text className="text-[20px] font-bold">
-            Вами оформлен заказ в магазине FRIZAR
+            Изменение статуса заказа в магазине FRIZAR
           </Text>
         </Container>
         <Container className="max-w-[600px] p-4 bg-white rounded mb-4">
-          <Text className="font-bold">Уважаемый, #ORDER_USER# !</Text>
-          <Text>Ваш заказ номер #ORDER_ID# от #ORDER_DATE# принят</Text>
-          <Text>Товары:</Text>
-          <Text>#ORDER_LIST#</Text>
-          <Text>Общая сумма: #PRICE#</Text>
+          <Text>Статус заказа номер #ORDER_ID# от #ORDER_DATE# изменен.</Text>
+          <Text>Новый статус заказа: #ORDER_STATUS#</Text>
           <Text>
             Чтобы следить за статусом заказа, перейдите по ссылке: &nbsp;
             <Link
               className="text-main"
               href={`https://frizar.ru/personal/orders/#ORDER_ID#`}
             >
-             https://frizar.ru/personal/orders/#ORDER_ID# 
+              https://frizar.ru/personal/orders/#ORDER_ID#
             </Link>
           </Text>
         </Container>
+
         <Container className="max-w-[600px] p-4 bg-white rounded">
           <Section>
             <Row>
@@ -111,9 +109,11 @@ export const StripeWelcomeEmail = () => (
               </Column>
             </Row>
           </Section>
+
           <Hr />
           <Text className="text-[10px] leading-[15px]">
-            Вы получили это письмо, так как вы сделали заказ на сайте frizar.ru
+            Вы получили это письмо, так как статус вашего заказа был изменен на
+            сайте frizar.ru
           </Text>
           <Text className="text-[10px] leading-[15px] text-secondary !mb-0">
             Общество с ограниченной ответственностью «Фризар». Юридический

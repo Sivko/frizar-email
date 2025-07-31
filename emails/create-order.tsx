@@ -1,11 +1,13 @@
 // [SALE_NEW_ORDER] Новый заказ
-import {
-  Container,
-  Link,
-  Text,
-} from "@react-email/components";
+import { Container, Link, Text } from "@react-email/components";
 import * as React from "react";
 import Layout from "./layout";
+
+const name = `{{ $("Webhook").item.json.body.contactInfo.name }}`;
+const orderNumber = `{{ $("Webhook").item.json.body.orderNumber }}`;
+const productsHtml = `{{ $json.productsHtml }}`;
+const orderLink = `{{ $json.orderLink }}`;
+const totalAmount = `{{ $json.totalAmount }}`;
 
 export const index = () => (
   <Layout>
@@ -15,19 +17,36 @@ export const index = () => (
       </Text>
     </Container>
     <Container className="max-w-[600px] p-4 bg-white rounded mb-4">
-      <Text className="font-bold">Уважаемый, #ORDER_USER# !</Text>
-      <Text>Ваш заказ номер #ORDER_ID# от #ORDER_DATE# принят</Text>
-      <Text>Товары:</Text>
-      <Text>#ORDER_LIST#</Text>
-      <Text>Общая сумма: #PRICE#</Text>
+      <Text className="font-bold">
+        Уважаемый, <span dangerouslySetInnerHTML={{ __html: name }} /> !
+      </Text>
       <Text>
+        Ваш заказ №{" "}
+        <span dangerouslySetInnerHTML={{ __html: orderNumber }} /> принят
+      </Text>
+      <Text>Товары:</Text>
+      {/* <Text>Общая сумма: #PRICE#</Text> */}
+      <table>
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Код</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th className="truncate">Кол-во</th>
+            <th>Итог</th>
+          </tr>
+        </thead>
+        <tbody dangerouslySetInnerHTML={{__html: productsHtml}} />
+      </table>
+      <Text className="text-right">
+          <strong>Итого:</strong> <span  dangerouslySetInnerHTML={{__html: totalAmount}}/>
+      </Text>
+      <Text className="mb-0">
         Чтобы следить за статусом заказа, перейдите по ссылке: &nbsp;
-        <Link
-          className="text-main"
-          href={`https://frizar.ru/personal/order/#ORDER_ID#`}
-        >
-          https://frizar.ru/personal/order/#ORDER_ID#
-        </Link>
+        <Text className="text-main">
+          <span dangerouslySetInnerHTML={{__html: orderLink}} />
+        </Text>
       </Text>
     </Container>
   </Layout>

@@ -3,8 +3,8 @@ import { Container, Link, Text } from "@react-email/components";
 import * as React from "react";
 import Layout from "./layout";
 
-const name = `{{ $("Webhook").item.json.body.contactInfo.name }}`;
-const orderNumber = `{{ $("Webhook").item.json.body.orderNumber }}`;
+const name = `{{ $json.firstName }}`;
+const orderNumber = `{{ $json.orderNumber }}`;
 const productsHtml = `{{ $json.productsHtml }}`;
 const orderLink = `{{ $json.orderLink }}`;
 const totalAmount = `{{ $json.totalAmount }}`;
@@ -26,7 +26,7 @@ export const index = () => (
       </Text>
       <Text>Товары:</Text>
       {/* <Text>Общая сумма: #PRICE#</Text> */}
-      <table>
+      <table className="text-[14px]">
         <thead>
           <tr>
             <th>№</th>
@@ -43,7 +43,7 @@ export const index = () => (
           <strong>Итого:</strong> <span  dangerouslySetInnerHTML={{__html: totalAmount}}/>
       </Text>
       <Text className="mb-0">
-        Чтобы следить за статусом заказа, перейдите по ссылке: &nbsp;
+        Чтобы следить за статусом заказа, перейдите по&nbsp;
         <Text className="text-main">
           <span dangerouslySetInnerHTML={{__html: orderLink}} />
         </Text>

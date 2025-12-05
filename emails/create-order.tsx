@@ -18,11 +18,11 @@ export const index = () => (
     </Container>
     <Container className="max-w-[600px] p-4 bg-white rounded mb-4">
       <Text className="font-bold">
-        Уважаемый, <span dangerouslySetInnerHTML={{ __html: name }} /> !
+        Уважаемый, <span dangerouslySetInnerHTML={{ __html: name }} />!
       </Text>
       <Text>
-        Ваш заказ №{" "}
-        <span dangerouslySetInnerHTML={{ __html: orderNumber }} /> принят
+        Ваш заказ № <span dangerouslySetInnerHTML={{ __html: orderNumber }} />{" "}
+        принят
       </Text>
       <Text>Товары:</Text>
       {/* <Text>Общая сумма: #PRICE#</Text> */}
@@ -37,16 +37,15 @@ export const index = () => (
             <th>Итог</th>
           </tr>
         </thead>
-        <tbody dangerouslySetInnerHTML={{__html: productsHtml}} />
+        <tbody dangerouslySetInnerHTML={{ __html: productsHtml }} />
       </table>
       <Text className="text-right">
-          <strong>Итого:</strong> <span  dangerouslySetInnerHTML={{__html: totalAmount}}/>
+        <strong>Итого:</strong>{" "}
+        <span dangerouslySetInnerHTML={{ __html: totalAmount }} />
       </Text>
       <Text className="mb-0">
         Чтобы следить за статусом заказа, перейдите по&nbsp;
-        <Text className="text-main">
-          <span dangerouslySetInnerHTML={{__html: orderLink}} />
-        </Text>
+        <span dangerouslySetInnerHTML={{ __html: orderLink }} />
       </Text>
     </Container>
   </Layout>
